@@ -1,0 +1,273 @@
+PS E:\Lishi\EditProgram\ImageStorage\tools> python .\place205_create.py
+> e:\lishi\editprogram\imagestorage\tools\place205_create.py(89)manipulate_from_folders()
+-> folderlist = getfolderlist_current(imgroot)
+(Pdb) l
+ 84         # output：
+ 85         srcDataset = 'Places205'
+ 86         query = formsql()       # sqlquery Template
+ 87         imgroot = 'E:/Lishi/Datasets/99-Source/Places 205 Database/Images'
+ 88         pdb.set_trace()
+ 89  ->     folderlist = getfolderlist_current(imgroot)
+ 90
+ 91         nums_folder = len(folderlist)
+ 92
+ 93         ann_arg = edict()
+ 94         pdb.set_trace()
+(Pdb) imgroot
+'E:/Lishi/Datasets/99-Source/Places 205 Database/Images'
+(Pdb) n
+> e:\lishi\editprogram\imagestorage\tools\place205_create.py(91)manipulate_from_folders()
+-> nums_folder = len(folderlist)
+(Pdb) folderlist
+['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'v', 'w', 'y']
+(Pdb) n
+> e:\lishi\editprogram\imagestorage\tools\place205_create.py(93)manipulate_from_folders()
+-> ann_arg = edict()
+(Pdb) n
+> e:\lishi\editprogram\imagestorage\tools\place205_create.py(94)manipulate_from_folders()
+-> pdb.set_trace()
+(Pdb) n
+> e:\lishi\editprogram\imagestorage\tools\place205_create.py(96)manipulate_from_folders()
+-> for i, folder_root in enumerate(folderlist):
+(Pdb) n
+> e:\lishi\editprogram\imagestorage\tools\place205_create.py(97)manipulate_from_folders()
+-> folderpath = os.path.join(imgroot,folder_root)
+(Pdb) n
+> e:\lishi\editprogram\imagestorage\tools\place205_create.py(98)manipulate_from_folders()
+-> subfolderlist = getfolderlist_current(folderpath)
+(Pdb) folderpath
+'E:/Lishi/Datasets/99-Source/Places 205 Database/Images\\a'
+(Pdb) n
+> e:\lishi\editprogram\imagestorage\tools\place205_create.py(100)manipulate_from_folders()
+-> nums_subfolder = len(subfolderlist)
+(Pdb) n
+> e:\lishi\editprogram\imagestorage\tools\place205_create.py(101)manipulate_from_folders()
+-> for idx,subfolder in enumerate(subfolderlist):
+(Pdb) nums_subfolder
+14
+(Pdb) n
+> e:\lishi\editprogram\imagestorage\tools\place205_create.py(103)manipulate_from_folders()
+-> imgfolder = os.path.join(folderpath, subfolder)
+(Pdb)
+> e:\lishi\editprogram\imagestorage\tools\place205_create.py(105)manipulate_from_folders()
+-> imglist = getAllImgs(imgfolder)
+(Pdb)
+> e:\lishi\editprogram\imagestorage\tools\place205_create.py(106)manipulate_from_folders()
+-> nums_img = len(imglist)
+(Pdb)
+> e:\lishi\editprogram\imagestorage\tools\place205_create.py(107)manipulate_from_folders()
+-> print ('{}: {} | {} |{} will be insert into the database.'.format(subfolder, idx+1, nums_subfolder,nums_img))
+(Pdb)
+abbey: 1 | 14 |15100 will be insert into the database.
+
+
+'{"label": "abbey"}'
+
+> e:\lishi\editprogram\imagestorage\tools\place205_create.py(123)manipulate_from_folders()
+-> flag_insert = insertdata(query,values)
+(Pdb) values
+['Places205', 'gsun_0003586c3eedd97457b2d729ebfe18b5', 'jpg', '{"label": "abbey"}', '73c4eb8779e39d2b2b5bcd840333beeff198ea2c97c9e0ebfc91af4e643027f8', 'jpg', 1024L, 768L, 3L, 'RGB']
+
+> e:\lishi\editprogram\imagestorage\tools\place205_create.py(124)manipulate_from_folders()
+
+
+airport_terminal: 2 | 14 |15100 will be insert into the database.
+alley: 3 | 14 |15100 will be insert into the database.
+amphitheater: 4 | 14 |7129 will be insert into the database.
+amusement_park: 5 | 14 |15100 will be insert into the database.
+apartment_building: 6 | 14 |0 will be insert into the database.
+aquarium: 7 | 14 |15100 will be insert into the database.
+aqueduct: 8 | 14 |8871 will be insert into the database.
+arch: 9 | 14 |15100 will be insert into the database.
+art_gallery: 10 | 14 |15100 will be insert into the database.
+art_studio: 11 | 14 |15100 will be insert into the database.
+assembly_line: 12 | 14 |6103 will be insert into the database.
+attic: 13 | 14 |11204 will be insert into the database.
+auditorium: 14 | 14 |15100 will be insert into the database.
+badlands: 1 | 23 |15100 will be insert into the database.
+bakery: 2 | 23 |0 will be insert into the database.
+ballroom: 3 | 23 |15100 will be insert into the database.
+bamboo_forest: 4 | 23 |5746 will be insert into the database.
+banquet_hall: 5 | 23 |6794 will be insert into the database.
+bar: 6 | 23 |15100 will be insert into the database.
+baseball_field: 7 | 23 |15100 will be insert into the database.
+basement: 8 | 23 |15100 will be insert into the database.
+basilica: 9 | 23 |15100 will be insert into the database.
+bayou: 10 | 23 |13405 will be insert into the database.
+beauty_salon: 11 | 23 |5607 will be insert into the database.
+bedroom: 12 | 23 |15100 will be insert into the database.
+boardwalk: 13 | 23 |15100 will be insert into the database.
+boat_deck: 14 | 23 |15100 will be insert into the database.
+bookstore: 15 | 23 |15100 will be insert into the database.
+botanical_garden: 16 | 23 |15100 will be insert into the database.
+bowling_alley: 17 | 23 |6278 will be insert into the database.
+boxing_ring: 18 | 23 |7622 will be insert into the database.
+bridge: 19 | 23 |15100 will be insert into the database.
+building_facade: 20 | 23 |15100 will be insert into the database.
+bus_interior: 21 | 23 |6014 will be insert into the database.
+butchers_shop: 22 | 23 |5929 will be insert into the database.
+butte: 23 | 23 |15100 will be insert into the database.
+cafeteria: 1 | 26 |5184 will be insert into the database.
+campsite: 2 | 26 |15100 will be insert into the database.
+candy_store: 3 | 26 |6513 will be insert into the database.
+canyon: 4 | 26 |15100 will be insert into the database.
+castle: 5 | 26 |15100 will be insert into the database.
+cathedral: 6 | 26 |0 will be insert into the database.
+cemetery: 7 | 26 |15100 will be insert into the database.
+chalet: 8 | 26 |12361 will be insert into the database.
+church: 9 | 26 |0 will be insert into the database.
+classroom: 10 | 26 |15100 will be insert into the database.
+closet: 11 | 26 |15100 will be insert into the database.
+clothing_store: 12 | 26 |10913 will be insert into the database.
+coast: 13 | 26 |15100 will be insert into the database.
+cockpit: 14 | 26 |14081 will be insert into the database.
+coffee_shop: 15 | 26 |15100 will be insert into the database.
+conference_center: 16 | 26 |8671 will be insert into the database.
+conference_room: 17 | 26 |9154 will be insert into the database.
+construction_site: 18 | 26 |15100 will be insert into the database.
+corn_field: 19 | 26 |15100 will be insert into the database.
+corridor: 20 | 26 |15100 will be insert into the database.
+cottage_garden: 21 | 26 |15100 will be insert into the database.
+courthouse: 22 | 26 |10490 will be insert into the database.
+courtyard: 23 | 26 |15100 will be insert into the database.
+creek: 24 | 26 |15100 will be insert into the database.
+crevasse: 25 | 26 |6654 will be insert into the database.
+crosswalk: 26 | 26 |13742 will be insert into the database.
+dam: 1 | 8 |15100 will be insert into the database.
+desert: 2 | 8 |0 will be insert into the database.
+dinette: 3 | 8 |0 will be insert into the database.
+dining_room: 4 | 8 |15100 will be insert into the database.
+dock: 5 | 8 |15100 will be insert into the database.
+doorway: 6 | 8 |0 will be insert into the database.
+dorm_room: 7 | 8 |6302 will be insert into the database.
+driveway: 8 | 8 |15100 will be insert into the database.
+engine_room: 1 | 2 |10061 will be insert into the database.
+excavation: 2 | 2 |9858 will be insert into the database.
+fairway: 1 | 9 |15100 will be insert into the database.
+field: 2 | 9 |0 will be insert into the database.
+fire_escape: 3 | 9 |15100 will be insert into the database.
+fire_station: 4 | 9 |15100 will be insert into the database.
+food_court: 5 | 9 |7360 will be insert into the database.
+forest_path: 6 | 9 |15100 will be insert into the database.
+forest_road: 7 | 9 |15100 will be insert into the database.
+formal_garden: 8 | 9 |12738 will be insert into the database.
+fountain: 9 | 9 |15100 will be insert into the database.
+galley: 1 | 6 |6992 will be insert into the database.
+game_room: 2 | 6 |6031 will be insert into the database.
+garbage_dump: 3 | 6 |6151 will be insert into the database.
+gas_station: 4 | 6 |15100 will be insert into the database.
+gift_shop: 5 | 6 |7684 will be insert into the database.
+golf_course: 6 | 6 |15100 will be insert into the database.
+harbor: 1 | 9 |15100 will be insert into the database.
+herb_garden: 2 | 9 |15100 will be insert into the database.
+highway: 3 | 9 |15100 will be insert into the database.
+home_office: 4 | 9 |13942 will be insert into the database.
+hospital: 5 | 9 |15100 will be insert into the database.
+hospital_room: 6 | 9 |8567 will be insert into the database.
+hotel: 7 | 9 |0 will be insert into the database.
+hotel_room: 8 | 9 |15100 will be insert into the database.
+hot_spring: 9 | 9 |15100 will be insert into the database.
+iceberg: 1 | 6 |15100 will be insert into the database.
+ice_cream_parlor: 2 | 6 |7770 will be insert into the database.
+ice_skating_rink: 3 | 6 |0 will be insert into the database.
+igloo: 4 | 6 |5155 will be insert into the database.
+inn: 5 | 6 |0 will be insert into the database.
+islet: 6 | 6 |6843 will be insert into the database.
+jail_cell: 1 | 1 |6531 will be insert into the database.
+kasbah: 1 | 4 |6024 will be insert into the database.
+kindergarden_classroom: 2 | 4 |6395 will be insert into the database.
+kitchen: 3 | 4 |15100 will be insert into the database.
+kitchenette: 4 | 4 |15100 will be insert into the database.
+laundromat: 1 | 5 |7568 will be insert into the database.
+lighthouse: 2 | 5 |15100 will be insert into the database.
+living_room: 3 | 5 |15100 will be insert into the database.
+lobby: 4 | 5 |15100 will be insert into the database.
+locker_room: 5 | 5 |6068 will be insert into the database.
+mansion: 1 | 12 |15100 will be insert into the database.
+market: 2 | 12 |0 will be insert into the database.
+marsh: 3 | 12 |15100 will be insert into the database.
+martial_arts_gym: 4 | 12 |7452 will be insert into the database.
+mausoleum: 5 | 12 |15100 will be insert into the database.
+medina: 6 | 12 |7067 will be insert into the database.
+monastery: 7 | 12 |0 will be insert into the database.
+motel: 8 | 12 |15100 will be insert into the database.
+mountain: 9 | 12 |15100 will be insert into the database.
+mountain_snowy: 10 | 12 |15100 will be insert into the database.
+museum: 11 | 12 |0 will be insert into the database.
+music_studio: 12 | 12 |15100 will be insert into the database.
+nursery: 1 | 1 |7485 will be insert into the database.
+ocean: 1 | 4 |15100 will be insert into the database.
+office: 2 | 4 |15100 will be insert into the database.
+office_building: 3 | 4 |15100 will be insert into the database.
+orchard: 4 | 4 |15100 will be insert into the database.
+pagoda: 1 | 14 |15100 will be insert into the database.
+palace: 2 | 14 |15100 will be insert into the database.
+pantry: 3 | 14 |7004 will be insert into the database.
+parking_lot: 4 | 14 |15100 will be insert into the database.
+parlor: 5 | 14 |15100 will be insert into the database.
+pasture: 6 | 14 |15100 will be insert into the database.
+patio: 7 | 14 |15100 will be insert into the database.
+pavilion: 8 | 14 |9063 will be insert into the database.
+phone_booth: 9 | 14 |15100 will be insert into the database.
+picnic_area: 10 | 14 |6089 will be insert into the database.
+playground: 11 | 14 |15100 will be insert into the database.
+plaza: 12 | 14 |15100 will be insert into the database.
+pond: 13 | 14 |15100 will be insert into the database.
+pulpit: 14 | 14 |8121 will be insert into the database.
+racecourse: 1 | 15 |8532 will be insert into the database.
+raft: 2 | 15 |15100 will be insert into the database.
+railroad_track: 3 | 15 |15100 will be insert into the database.
+rainforest: 4 | 15 |15100 will be insert into the database.
+reception: 5 | 15 |7311 will be insert into the database.
+residential_neighborhood: 6 | 15 |10624 will be insert into the database.
+restaurant: 7 | 15 |15100 will be insert into the database.
+restaurant_kitchen: 8 | 15 |5721 will be insert into the database.
+restaurant_patio: 9 | 15 |10077 will be insert into the database.
+rice_paddy: 10 | 15 |14097 will be insert into the database.
+river: 11 | 15 |15100 will be insert into the database.
+rock_arch: 12 | 15 |8557 will be insert into the database.
+rope_bridge: 13 | 15 |5552 will be insert into the database.
+ruin: 14 | 15 |11339 will be insert into the database.
+runway: 15 | 15 |15100 will be insert into the database.
+sandbar: 1 | 20 |5175 will be insert into the database.
+schoolhouse: 2 | 20 |9316 will be insert into the database.
+sea_cliff: 3 | 20 |15100 will be insert into the database.
+shed: 4 | 20 |15100 will be insert into the database.
+shoe_shop: 5 | 20 |5184 will be insert into the database.
+shopfront: 6 | 20 |8494 will be insert into the database.
+shower: 7 | 20 |15100 will be insert into the database.
+ski_resort: 8 | 20 |15100 will be insert into the database.
+ski_slope: 9 | 20 |15100 will be insert into the database.
+sky: 10 | 20 |15100 will be insert into the database.
+skyscraper: 11 | 20 |15100 will be insert into the database.
+slum: 12 | 20 |12794 will be insert into the database.
+snowfield: 13 | 20 |5408 will be insert into the database.
+stadium: 14 | 20 |0 will be insert into the database.
+stage: 15 | 20 |0 will be insert into the database.
+staircase: 16 | 20 |15100 will be insert into the database.
+subway_station: 17 | 20 |0 will be insert into the database.
+supermarket: 18 | 20 |15100 will be insert into the database.
+swamp: 19 | 20 |15100 will be insert into the database.
+swimming_pool: 20 | 20 |0 will be insert into the database.
+television_studio: 1 | 9 |5940 will be insert into the database.
+temple: 2 | 9 |0 will be insert into the database.
+topiary_garden: 3 | 9 |8354 will be insert into the database.
+tower: 4 | 9 |15100 will be insert into the database.
+track: 5 | 9 |0 will be insert into the database.
+train_railway: 6 | 9 |15100 will be insert into the database.
+train_station: 7 | 9 |0 will be insert into the database.
+tree_farm: 8 | 9 |10894 will be insert into the database.
+trench: 9 | 9 |9380 will be insert into the database.
+underwater: 1 | 1 |0 will be insert into the database.
+valley: 1 | 5 |15100 will be insert into the database.
+vegetable_garden: 2 | 5 |15100 will be insert into the database.
+veranda: 3 | 5 |13159 will be insert into the database.
+viaduct: 4 | 5 |15100 will be insert into the database.
+volcano: 5 | 5 |15100 will be insert into the database.
+waiting_room: 1 | 6 |5921 will be insert into the database.
+watering_hole: 2 | 6 |6900 will be insert into the database.
+water_tower: 3 | 6 |15061 will be insert into the database.
+wheat_field: 4 | 6 |15100 will be insert into the database.
+windmill: 5 | 6 |15100 will be insert into the database.
+wind_farm: 6 | 6 |15100 will be insert into the database.
+yard: 1 | 1 |15100 will be insert into the database.

@@ -1,0 +1,332 @@
+
+%-- 2017/7/10 10:52 --%
+
+conn = database.ODBCConnection('osdba','postgres','vrlabh1109'); % error
+conn = database.ODBCConnection('PostgreSQL30','postgres','vrlabh1109');%正确调用方式;
+
+
+
+exec(conn, ['create table score(student_name varchar(40),chinese_score int,math_score int,test_date date);']);%right
+ans
+exec(conn, ['create table person(student_name varchar,chinese_score int,math_score int,test_date date);']);%right
+ans
+exec(conn, ['select * from score;']);
+ans
+exec(conn, ['insert into score values("xiaoming",55,75,null);']); % error "xiaoming"
+
+
+exec(conn,['create table student（no int primary key, student_name varchar(40), age int;']);
+ans
+exec(conn,['create table student（no int primary key, student_name varchar(40), age int);']);
+ans
+exec(conn,['create table student（no int primary key, student_name varchar(40), age int);'])
+exec(conn,['create table student（no int, student_name varchar(40), age int);'])
+exec(conn,['create table student(no int primary key, student_name varchar(40), age int);'])
+
+exec(conn,['''insert into student values(1,'zhangsan',14);'''])& error
+exec(conn,['insert into student values(1,''zhangsan'',14);']) % right
+exec(conn,['insert into student values(2,''zhangsan'',15);'])
+exec(conn,['insert into student values(3,''zhangsan'',13);'])
+exec(conn,['select *  from student;']) %正确方式
+
+sqlqurey = 'select * from student;';
+curs = exec(conn,sqlquery);
+curs = exec(conn,sqlqurey);
+curs = fetch(curs);
+A=curs.Data % 获得返回值，类型cell
+
+数据返回类型
+从数据库中读取数据到matlab有三种数据类型（默认为元胞类型cellarray），分别为元胞类型（cellarray），数字型（numeric），结构型（structure）。可以在链接数据库之前通过setdbprefs函数来进行设置。如果数据库文件中全部是数值型数据时最好采用numeric型的数据，这样可以使得读取速度大幅提高，特别是在大型数据读取时非常明显。我曾经从数据库中读取过100万个数据，用cellarray时用了16s，但是用numeric时却只用了8s，速度提高很大啊，对电脑配置不好的来说，很有帮助的
+setdbprefs('DataReturnFormat','cellarray')
+
+curs = exec(conn,sqlquery);
+curs.Data
+curs = fetch(curs);
+curs.Data
+curs.Data{1}
+
+temp = curs.Data
+curs.Data{1}{1} % error！！
+curs.Data{1,1}
+curs.Data{1,2}
+curs.Data{1,3}
+close(curs);%关闭游标；
+close(conn);%关闭连接；
+
+%查看数据库连接属性；
+get(conn,'AutoCommit') 
+
+% 另外一种插入数据的方式：
+conn=database.ODBCConnection('PostgreSQL30','postgres','vrlabh1109');
+get(conn,'AutoCommit')
+exdata(1,1) = {'4'};
+exdata(1,2) = {'liming'};
+exdata(1,3) = {12};
+colnames = {'no','student_name','age'}
+datainsert(conn,'student',colnames,exdata);
+exdata(1,1) = {4};
+exdata(1,2) = {'zhanglishi'};
+exdata(1,3) = {25}
+datainsert(conn,'student',colnames,exdata);%插入数据
+
+
+
+%-- 2017/7/10 16:03 --%
+mex RGB2Gray.cpp
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clear all
+close all
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+mex -v
+mex
+mex -v
+make('RGB2Gray.cpp)
+make('RGB2Gray.cpp')
+cppMake('RGBtoGRAY.cpp')
+img=RGBtoGRAY('test.jpg');
+make.m
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+%-- 2017/7/10 17:01 --%
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clear all
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clear all
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clear all
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+img =RGB2Gray('test.jpg');
+img = imread('test.jpg');
+imshow(img)
+img =RGB2Gray('./test.jpg');
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+img =RGB2Gray('./test.jpg');
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+img =RGB2Gray('./test.jpg');
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+img =RGB2Gray('./test.jpg');
+img =RGB2Gray('test.jpg');
+img =RGB2Gray('E:\Lishi\EditProgram\test\matlab-mex\test.jpg');
+img =RGB2Gray('E:/Lishi/EditProgram/test/matlab-mex/test.jpg');
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+img =RGB2Gray('test.jpg');
+img =RGB2Gray('E:/Lishi/EditProgram/test/matlab-mex/test.jpg');
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+img = RGBtoGRAY('test.jpg');
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+img = RGBtoGRAY('test.jpg');
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+img = RGBtoGRAY('test.jpg');
+imshow(img)
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+%-- 2017/7/10 19:51 --%
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clear all
+close all
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+run('E:\Lishi\EditProgram\test\matlab-mex\make-openssl.m')
+clear all
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make-openssl.m')
+run('E:\Lishi\EditProgram\test\matlab-mex\make-module.m')
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+cls
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+imgpath = './test.jpg';
+sha = sha256(imgpath);
+imgpath = './test.jpg';
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+imgpath = './test.jpg';
+sha = sha256(imgpath);
+imgpath = 'test.jpg';
+sha = sha256(imgpath);
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+imgpath = 'test.jpg';
+sha = sha256(imgpath)
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+imgpath = 'test.jpg';
+sha = sha256(imgpath);
+%-- 2017/7/10 22:02 --%
+uiopen('E:\Lishi\EditProgram\test\matlab-mex\sha256.cpp',1)
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+imgpath = 'test.jpg';
+strsha = sha256(imgpath);
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+strsha = sha256(imgpath);
+imgpath = 'test.jpg';
+strsha = sha256(imgpath);
+run('E:\Lishi\EditProgram\test\matlab-mex\make.m')
+clc
+imgpath('test.jpg');
+imgpath='test.jpg';
+strsha = sha256(imgpath)
+strsha1 = '0b00d55177b8da4623644343dad5d8c9aea1d2139cb5e149d605c236dbc1c9ba'
+strcmp(strsha,strsha1)
+%-- 2017/7/11 14:44 --%
+clear all
+close all
+clc
+doc fread
+fildID = fopen('nine.bin','w');
+fwrite(fildID,[1:9]);
+fclose(fildID);
+fileID = fopen('nine.bin');
+A = fread(fileID);
+A
+whis
+whos
+fclose(fileID);
+fileID = fopen('doubledata.bin','e');
+fileID = fopen('doubledata.bin','w');
+fwrite(fileID,magic(3),'double');
+fclose(fileID);
+fileID = fopen('doubledata.bin');
+A = fread(fileID,[3 3],'double')
+magic(3)
+A = fread(fileID)
+A = fread(fileID,'double')
+A = fread(fileID,[3 3],'double')
+fclose(fileID);
+fopen('doubledata.bin');
+A = fread(fileID)
+whos
+fclose(fileID);
+fopen('doubledata.bin')
+A = fread(fileID,'double')
+whos
+fclose(fileID);
+fildID = fopen('nine.bin','w')
+fwrite(fileID,[1:9],'uint16')
+fclose(fileID);
+fileID = fopen('nine.bin');
+A = fread(fileID,[3,2],'uint16')
+A = fread(fileID,3,'uint16')
+fclose(fileID)
+fileID = fopen('nine.bin','w');
+fwrite(fileID,[1:6],'float')
+a =
+fwrite(fileID,[7:9],'float')
+fclose(fileID)
+fileID = fopen('nine.bin');
+A = fread(fileID,[3,2],'float')
+fread(fileID,[3,2],'float')
+whos
+fclose(fileID)
+fileID = fopen('nine.bin');
+fread(fileID,[3,2],'float')
+whos
+fclose(fileID)
+fileID = fopen('nine.bin','w');
+fwrite(fileID,[1:6],'float')
+fwrite(fileID,[6:9],'uint16')
+fclose(fileIDD);
+fclose(fileID);
+fid = fopen('nine.bin');
+A=fread(fid,[2 3],'float')
+whos
+B=fread(fid,3,'uint16')
+whos
+fread(fid,1,'float')
+fread(fid,1,'uint16')
+fclose(fid)
+fclose(fid);
+fclose(fid)
+clear all
+close all
+clc
+fileID = fopen('nine.bin','w');
+fwrite(fileID,[1:9],'uint16')
+fclose('all')
+fileID = fopen('nine.bin')
+fread(fileID,[3,3])
+frewind(fileID)
+fread(fileID,[3,3],'uint16')
+frewind(fileID)
+skip = 4
+B = fread(fileID,[2 1],'2*uint16',skip)
+skip = 4
+frewind(fileID)
+B = fread(fileID,3,'2*uint16',skip)
+B = fread(fileID,[2 1],'2*uint16',skip)clc
+clc
+close all
+clear all
+clc
+str = ['AB';'CD';'EF';'FA']
+fileID = fopen('bcd.bin','w');
+fwrite(fileID,hex2dec(str),'ubit8')
+fclose(fileID)
+fileID =fopen('bcd.bin')
+onebyte = fread(fileID,4,'*ubit8')
+whos
+disp(dec2hex(onebyte))
+fclose('all')
+close all
+clear all
+clc
+fileID =fopen('nine.bin','w');
+fwrite(fileID,[1.0:9.0],'single')
+fclose(fileID)
+[1.0:9]
+whos
+fileID = fopen('nine.bin');
+fread(fileID,'single')
+whos
+doc fwrite
+clear all
+close all
+clc
+
+
+postgreSql数据库常见问题：
+1、大小写问题：
+	postgresql 对大小写是敏感的，并默认对SQL语句中的数据库对象名称转化为小写，
+	因此创建数据对象指定了大小写混合的对象名称，那么通过对SQL语句访问这些对象时，
+	由于Postgresql数据库里表名应该是分大小写的，导致找不到对应的属性；
+	同样，对数据也是大小写敏感的（SQLServer 默认是不敏感的）；
+实例：表：TUser，字段：Name,字段值：a'Tony Tang"
+select * from "TUser" where "Name" ILIKE '%tony'; % 备注，此时单独的like不能查询到制定的数据；
+select * from "TUser" where "Name" LIKE '%TONY%';
+
+(备注：对SQL标准中的保留字和关键字不区分大小)
+
+postgreSql select 语句：
+	1、select "srcDataset",min(id) from "imageInfo" group by "srcDataset";
+	2、select "srcDataset",count(id) from "imageInfo" group by "srcDataset";
+	3、select count(id) from "imageInfo" where "srcDataset" ilike 'ImageNet';
